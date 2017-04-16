@@ -12,6 +12,7 @@
 		D7F2D0641E9DA2EB0010B5FD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D7F2D0631E9DA2EB0010B5FD /* Assets.xcassets */; };
 		D7F2D0671E9DA2EC0010B5FD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D7F2D0651E9DA2EC0010B5FD /* LaunchScreen.storyboard */; };
 		D7F2D0721E9DA7810010B5FD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D7F2D0701E9DA7810010B5FD /* Main.storyboard */; };
+		D7F2D0751EA333FF0010B5FD /* CurrencyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F2D0741EA333FF0010B5FD /* CurrencyModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		D7F2D0661E9DA2EC0010B5FD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D7F2D0681E9DA2EC0010B5FD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D7F2D0711E9DA7810010B5FD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = CurrencyExchange/Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		D7F2D0741EA333FF0010B5FD /* CurrencyModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CurrencyModel.swift; path = ../CurrencyModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +57,7 @@
 			isa = PBXGroup;
 			children = (
 				D7F2D05C1E9DA2EB0010B5FD /* AppDelegate.swift */,
+				D7F2D0741EA333FF0010B5FD /* CurrencyModel.swift */,
 				D7F2D05E1E9DA2EB0010B5FD /* ViewController.swift */,
 				D7F2D0701E9DA7810010B5FD /* Main.storyboard */,
 				D7F2D0631E9DA2EB0010B5FD /* Assets.xcassets */,
@@ -138,6 +141,7 @@
 			files = (
 				D7F2D05F1E9DA2EB0010B5FD /* ViewController.swift in Sources */,
 				D7F2D05D1E9DA2EB0010B5FD /* AppDelegate.swift in Sources */,
+				D7F2D0751EA333FF0010B5FD /* CurrencyModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
