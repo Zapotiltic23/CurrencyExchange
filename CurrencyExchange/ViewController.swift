@@ -49,15 +49,30 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
         return model.pickerCountry[row]
     }
     
-    //This function changes the font size and color of the text in the picker
-    func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
-        
-        let sizeData =  model.pickerCountry[row]
-        let countries = NSAttributedString(string: sizeData, attributes: [NSFontAttributeName:UIFont(name: "Thonburi", size: 20.0)!, NSForegroundColorAttributeName:UIColor.black])
-        
-        return countries
-    }
     
+    //func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
+        
+     //   let sizeData =  model.pickerCountry[row]
+        
+     //   let countries = NSAttributedString(string: sizeData, attributes: [NSFontAttributeName:UIFont(name: "Thonburi", size: 20.0)!, NSForegroundColorAttributeName:UIColor.black])
+        
+  //      return countries
+//    }
+    
+    //This function changes the font size of the text in the picker
+    func pickerView(_ pickerView: UIPickerView, viewForRow row: Int, forComponent component: Int, reusing view: UIView?) -> UIView {
+        
+        var label = view as! UILabel!
+        if label == nil {
+            label = UILabel()
+        }
+        
+        let data = model.pickerCountry[row]
+        let title = NSAttributedString(string: data, attributes: [NSFontAttributeName: UIFont.systemFont(ofSize: 14.0, weight: UIFontWeightRegular)])
+        label?.attributedText = title
+        label?.textAlignment = .center
+        return label!
+    }
     
     //MARK: Actions
     
