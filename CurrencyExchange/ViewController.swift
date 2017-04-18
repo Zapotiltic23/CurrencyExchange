@@ -15,7 +15,7 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
     @IBOutlet weak var flagLabel: UILabel!
     @IBOutlet weak var flagLabel2: UILabel!
     @IBOutlet weak var currencyLabel1: UILabel!
-    @IBOutlet weak var curencyLabel2: UILabel! //Dont' try to change the identifier for these variables!
+    
     
     let model = currencyModel.shared
     
