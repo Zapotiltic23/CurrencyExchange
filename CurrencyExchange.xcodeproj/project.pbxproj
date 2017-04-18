@@ -13,6 +13,8 @@
 		D7F2D0671E9DA2EC0010B5FD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D7F2D0651E9DA2EC0010B5FD /* LaunchScreen.storyboard */; };
 		D7F2D0721E9DA7810010B5FD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D7F2D0701E9DA7810010B5FD /* Main.storyboard */; };
 		D7F2D0751EA333FF0010B5FD /* CurrencyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F2D0741EA333FF0010B5FD /* CurrencyModel.swift */; };
+		D7F2D0771EA5F0720010B5FD /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F2D0761EA5F0720010B5FD /* FavoritesViewController.swift */; };
+		D7F2D0791EA5F6670010B5FD /* FavoritesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F2D0781EA5F6670010B5FD /* FavoritesView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,8 @@
 		D7F2D0681E9DA2EC0010B5FD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D7F2D0711E9DA7810010B5FD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = CurrencyExchange/Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D7F2D0741EA333FF0010B5FD /* CurrencyModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CurrencyModel.swift; path = ../CurrencyModel.swift; sourceTree = "<group>"; };
+		D7F2D0761EA5F0720010B5FD /* FavoritesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FavoritesViewController.swift; path = ../FavoritesViewController.swift; sourceTree = "<group>"; };
+		D7F2D0781EA5F6670010B5FD /* FavoritesView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FavoritesView.swift; path = ../FavoritesView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +62,8 @@
 			children = (
 				D7F2D05C1E9DA2EB0010B5FD /* AppDelegate.swift */,
 				D7F2D0741EA333FF0010B5FD /* CurrencyModel.swift */,
+				D7F2D0781EA5F6670010B5FD /* FavoritesView.swift */,
+				D7F2D0761EA5F0720010B5FD /* FavoritesViewController.swift */,
 				D7F2D05E1E9DA2EB0010B5FD /* ViewController.swift */,
 				D7F2D0701E9DA7810010B5FD /* Main.storyboard */,
 				D7F2D0631E9DA2EB0010B5FD /* Assets.xcassets */,
@@ -139,8 +145,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D7F2D0791EA5F6670010B5FD /* FavoritesView.swift in Sources */,
 				D7F2D05F1E9DA2EB0010B5FD /* ViewController.swift in Sources */,
 				D7F2D05D1E9DA2EB0010B5FD /* AppDelegate.swift in Sources */,
+				D7F2D0771EA5F0720010B5FD /* FavoritesViewController.swift in Sources */,
 				D7F2D0751EA333FF0010B5FD /* CurrencyModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

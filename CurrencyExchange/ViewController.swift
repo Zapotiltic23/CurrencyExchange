@@ -22,10 +22,26 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
         
+        // Make Swipe gestures
+        
+        let swipeLeft: UISwipeGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipe))
+        swipeLeft.direction = UISwipeGestureRecognizerDirection.left
+        view.addGestureRecognizer(swipeLeft) //Add gesture to the view
+
         currencyPicker.dataSource = self
         currencyPicker.delegate = self
+        
+    }
+    
+    func handleSwipe(_ sender: UISwipeGestureRecognizer){
+        
+        self.performSegue(withIdentifier: "favorite", sender: self)
+    }
+    
+    // Enable Unwinding other views
+    
+    @IBAction func unwindToRates(segue: UIStoryboardSegue){
         
     }
     
@@ -90,7 +106,7 @@ class ViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDele
             let rate = results["rate"] as! NSArray
             let index1 = rate[1] as! NSDictionary // rate = [0 1]
             let currencyRate = index1["Rate"] as! String // This is the exchange rate of the first container idexed [0] in the rate dictionary
-            self.currencyLabel1.text = "Exchange rate: \(currencyRate)"
+            self.currencyLabel1.text = "Exchange Rate: \(currencyRate)"
             print(queryString)
         }//End of query
 

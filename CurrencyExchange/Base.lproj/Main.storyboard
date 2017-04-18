@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Osc-16-i5c">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -9,7 +9,23 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Navigation Controller-->
+        <scene sceneID="bFe-B8-qQ4">
+            <objects>
+                <navigationController id="Osc-16-i5c" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="c6A-0U-k1t">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="nq7-AY-VqJ"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="svT-3r-NjV" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1014" y="46"/>
+        </scene>
+        <!--Rates-->
         <scene sceneID="tne-QT-ifu">
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="CurrencyExchange" customModuleProvider="target" sceneMemberID="viewController">
@@ -25,13 +41,6 @@
                                 <rect key="frame" x="16" y="251" width="343" height="123"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                             </pickerView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uod-cK-nKL">
-                                <rect key="frame" x="16" y="67" width="343" height="32"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UKV-CZ-O2H">
                                 <rect key="frame" x="16" y="135" width="142" height="79"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
@@ -57,19 +66,51 @@
                                     <action selector="getRate:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Q1g-Nl-Kfq"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uod-cK-nKL">
+                                <rect key="frame" x="16" y="81" width="343" height="32"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
+                    <navigationItem key="navigationItem" title="Rates" id="4oe-jc-0q3"/>
                     <connections>
                         <outlet property="currencyLabel1" destination="uod-cK-nKL" id="CvH-aO-Fc8"/>
                         <outlet property="currencyPicker" destination="5OK-ew-V6g" id="mof-9g-9s7"/>
                         <outlet property="flagLabel" destination="UKV-CZ-O2H" id="ifo-Mg-DCg"/>
                         <outlet property="flagLabel2" destination="4pg-aF-OzV" id="q8p-Uw-Bik"/>
+                        <segue destination="dEX-Zb-byH" kind="show" identifier="favorite" id="akC-WJ-hZb"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="32.799999999999997" y="37.331334332833585"/>
+            <point key="canvasLocation" x="-234" y="45"/>
+        </scene>
+        <!--Favorites-->
+        <scene sceneID="LM1-l1-g2P">
+            <objects>
+                <viewController id="dEX-Zb-byH" customClass="FavoritesViewController" customModule="CurrencyExchange" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="lF4-lH-GSc"/>
+                        <viewControllerLayoutGuide type="bottom" id="Wty-Cd-XmR"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="wyp-ra-fBP" customClass="FavoritesView" customModule="CurrencyExchange" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Favorites" id="6yZ-rU-pZQ"/>
+                    <connections>
+                        <segue destination="916-cI-g4E" kind="unwind" identifier="unwindToRates" unwindAction="unwindToRatesWithSegue:" id="c7L-cU-yhQ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8VE-Ye-cr7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="916-cI-g4E" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="601" y="45"/>
         </scene>
     </scenes>
 </document>
