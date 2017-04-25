@@ -18,16 +18,26 @@ class currencyModel {
     
      let countryCode = ["AF", "AX", "AL", "AS", "AD", "AO", "AI", "AG", "AR", "AM", "AW", "AU", "AT", "AZ", "BS", "BH", "BD", "BB", "BY", "BE", "BZ", "BM", "BT", "BO", "BA", "BW", "BR", "BN", "BG", "BF", "CM", "CA", "IC", "CV", "KY", "TD", "CL", "CN", "CO", "CR", "CI", "HR", "CU", "CY", "DK", "DO", "EC", "EG", "SV", "EE", "ET", "FI", "FR", "DE", "GH", "GR", "GL", "GU", "GN", "HT", "HN", "HU", "IS", "IN", "ID", "IR", "IQ", "IE", "IL", "IT", "JM", "JP", "JO", "KZ", "KE", "LB", "LR", "LY", "LT", "LU", "MK", "MG", "MY", "MX", "MN", "ME", "MA", "MZ", "NP", "NL", "NZ", "NI", "NG", "KP", "NO", "PK", "PA", "PY", "PE", "PH", "PL", "PT", "PR", "QA", "RO", "RU", "RW", "WS", "SM", "SA", "SN", "RS", "SL", "SG", "SK", "SI", "SO", "ZA", "KR", "ES", "LK", "SD,", "SE", "CH", "SY", "TW", "TJ", "TZ", "TH", "TG", "TT", "TN", "TR", "TC", "UG", "UA", "AE", "GB", "US", "UY", "UZ", "VA", "VE", "VN", "YE", "ZM", "ZW"]
     
+    var favoritesCollection:[String] = []
+    
     var index: Int
     var index2: Int
+    var favoritesIndexPicker: Int
+    var manager: Int
+    var checkIndex: IndexPath
+    var checkIndex2: IndexPath
     
-    init(_ index: Int, _ index2: Int){
+    init(_ index: Int, _ index2: Int, _ favoritesIndexPicker: Int, _ manager: Int, _ checkIndex: IndexPath, _ checkIndex2: IndexPath){
         
         self.index = index
         self.index2 = index2
+        self.favoritesIndexPicker = favoritesIndexPicker
+        self.manager = manager
+        self.checkIndex = [0,0]
+        self.checkIndex2 = [0,0]
     }//End of constructor
     
-    static let shared:currencyModel = currencyModel(0,0)
+    static let shared:currencyModel = currencyModel(0,0,0,0,[0,0],[0,0])
     
     func flags(countryCode: String) -> String{
         
