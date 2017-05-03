@@ -38,6 +38,8 @@ class FavoritesViewController: UIViewController, UIPickerViewDataSource, UIPicke
         
         exchangeOutlet.isEnabled = false
         
+        
+        
     }//End of viewDidLoad()
     
     override func didReceiveMemoryWarning() {
@@ -55,24 +57,43 @@ class FavoritesViewController: UIViewController, UIPickerViewDataSource, UIPicke
         model.manager = 0
         favoritesTableView.cellForRow(at: model.checkIndex)?.accessoryType = UITableViewCellAccessoryType.none
         favoritesTableView.cellForRow(at: model.checkIndex2)?.accessoryType = UITableViewCellAccessoryType.none
-        
         self.performSegue(withIdentifier: "unwindToRates", sender: self)
+
+        
     }
     
     @IBAction func favoriteButton(_ sender: UIButton) {
         
+        // Use 'UserDefaults' to store user's favorites into our favorites collection array
         model.favoritesCollection.append(model.pickerCountry[favoritesPickerView.selectedRow(inComponent: 0)])
+        UserDefaults.standard.set(model.favoritesCollection, forKey: "favorites")
         favoritesTableView.reloadData()
+        
+        
         //print(model.favoritesCollection)
         
     }//End of favoriteButton
+    
+    override func viewDidAppear(_ animated: Bool) {
+        
+        if let savedFavorites = UserDefaults.standard.object(forKey: "favorites") as? [String]{
+
+            model.favoritesCollection = savedFavorites
+        }
+    }
+    
+    
     //---------------------------------------------------------------------------------------------
     
     //[MARK]: Class methods
     
     func handleSwipe(_ sender: UISwipeGestureRecognizer){
         
-        
+        //Need to uncheck the selected rows before going back to the 1st view so we can check mark again
+        //when we come back to this second view. Manager counter has to be reset as well.
+        model.manager = 0
+        favoritesTableView.cellForRow(at: model.checkIndex)?.accessoryType = UITableViewCellAccessoryType.none
+        favoritesTableView.cellForRow(at: model.checkIndex2)?.accessoryType = UITableViewCellAccessoryType.none
         self.performSegue(withIdentifier: "unwindToRates", sender: self)
         
     }//End of handleSwipe
@@ -133,8 +154,11 @@ class FavoritesViewController: UIViewController, UIPickerViewDataSource, UIPicke
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         
         if editingStyle == .delete{
+            
+            // User 'UserDefaults' to store the newly modified favorites array (deleting a row)
             model.favoritesCollection.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
+            UserDefaults.standard.set(model.favoritesCollection, forKey: "favorites")
         }
     }
     

@@ -18,7 +18,8 @@ class currencyModel {
     
      let countryCode = ["AF", "AX", "AL", "AS", "AD", "AO", "AI", "AG", "AR", "AM", "AW", "AU", "AT", "AZ", "BS", "BH", "BD", "BB", "BY", "BE", "BZ", "BM", "BT", "BO", "BA", "BW", "BR", "BN", "BG", "BF", "CM", "CA", "IC", "CV", "KY", "TD", "CL", "CN", "CO", "CR", "CI", "HR", "CU", "CY", "DK", "DO", "EC", "EG", "SV", "EE", "ET", "FI", "FR", "DE", "GH", "GR", "GL", "GU", "GN", "HT", "HN", "HU", "IS", "IN", "ID", "IR", "IQ", "IE", "IL", "IT", "JM", "JP", "JO", "KZ", "KE", "LB", "LR", "LY", "LT", "LU", "MK", "MG", "MY", "MX", "MN", "ME", "MA", "MZ", "NP", "NL", "NZ", "NI", "NG", "KP", "NO", "PK", "PA", "PY", "PE", "PH", "PL", "PT", "PR", "QA", "RO", "RU", "RW", "WS", "SM", "SA", "SN", "RS", "SL", "SG", "SK", "SI", "SO", "ZA", "KR", "ES", "LK", "SD,", "SE", "CH", "SY", "TW", "TJ", "TZ", "TH", "TG", "TT", "TN", "TR", "TC", "UG", "UA", "AE", "GB", "US", "UY", "UZ", "VA", "VE", "VN", "YE", "ZM", "ZW"]
     
-    var favoritesCollection:[String] = []
+    // Set our favorites array to the stored user's favorites
+    var favoritesCollection:[String] = (UserDefaults.standard.object(forKey: "favorites") as? [String])!
     
     var index: Int
     var index2: Int
