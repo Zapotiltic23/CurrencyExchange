@@ -1,9 +1,11 @@
 //
-//  FavoritesViewController.swift
+//  CurrencyModel.swift
 //  CurrencyExchange
 //
-//  Created by lis meza on 4/17/17.
-//  Copyright © 2017 Horacio Sanchez. All rights reserved.
+//  Horacio A Sanchez
+//  CPSC 411
+//  DavidMcLaren
+//  May 12 2017
 //
 
 import UIKit
@@ -16,11 +18,12 @@ class FavoritesViewController: UIViewController, UIPickerViewDataSource, UIPicke
     @IBOutlet weak var favoritesTableView: UITableView!
     @IBOutlet weak var favoritesPickerView: UIPickerView!
     @IBOutlet weak var favoriteOutlet: UIButton!
-    @IBOutlet weak var exchangeOutlet: UIButton!
+//    @IBOutlet weak var exchangeOutlet: UIButton!
+    
     
     let model = currencyModel.shared
-    //---------------------------------------------------------------------------------------------
     
+    //---------------------------------------------------------------------------------------------
     //[MARK]: View set up
 
     override func viewDidLoad() {
@@ -30,15 +33,14 @@ class FavoritesViewController: UIViewController, UIPickerViewDataSource, UIPicke
         swipeRight.direction = UISwipeGestureRecognizerDirection.right
         view.addGestureRecognizer(swipeRight)
         
+        
         favoritesPickerView.dataSource = self
         favoritesPickerView.delegate = self
         
         favoritesTableView.delegate = self
         favoritesTableView.dataSource = self
         
-        exchangeOutlet.isEnabled = false
-        
-        
+        //exchangeOutlet.isEnabled = false
         
     }//End of viewDidLoad()
     
@@ -46,33 +48,66 @@ class FavoritesViewController: UIViewController, UIPickerViewDataSource, UIPicke
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    //---------------------------------------------------------------------------------------------
     
+    
+    //---------------------------------------------------------------------------------------------
     // [MARK]: Actions
     
-    @IBAction func exchangeButton(_ sender: UIButton) {
- 
-        //Need to uncheck the selected rows before going back to the 1st view so we can check mark again
-        //when we come back to this second view. Manager counter has to be reset as well.
-        model.manager = 0
-        favoritesTableView.cellForRow(at: model.checkIndex)?.accessoryType = UITableViewCellAccessoryType.none
-        favoritesTableView.cellForRow(at: model.checkIndex2)?.accessoryType = UITableViewCellAccessoryType.none
-        self.performSegue(withIdentifier: "unwindToRates", sender: self)
-
-        
-    }
+//    @IBAction func exchangeButton(_ sender: UIButton) {
+// 
+//        let queryString = "select * from yahoo.finance.xchange where pair in (\"\(model.pickerData[model.checkIndex[1]])\",\"\(model.pickerData[model.checkIndex[1]])\")"
+//        
+//        model.flagText = model.flags(countryCode: model.favoritesCountryCode[model.indexArray[0]])
+//        model.flagText2 = model.flags(countryCode: model.favoritesCountryCode[model.indexArray[1]])
+//        print(print(model.favoritesCountryCode))
+//        print(model.favoritesCountryCode[model.indexArray[0]])
+//        print(model.favoritesCountryCode[model.indexArray[1]])
+//
+//        model.query(queryString){ jsonDict in
+//            let queryDict = jsonDict["query"] as! NSDictionary
+//            let results = queryDict["results"] as! NSDictionary
+//            let rate = results["rate"] as! NSArray
+//            let index1 = rate[1] as! NSDictionary // rate = [0 1]
+//            let currencyRate = index1["Rate"] as! String // This is the exchange rate of the first container idexed [0] in the rate dictionary
+//            self.model.currency = currencyRate
+//            print(results)
+//        }//End of query
+//        
+//        //* Need to uncheck the selected rows before going back to the 1st view so we can check mark again
+//        //  when we come back to this second view. Manager counter has to be reset as well.
+//        
+//        //* We need to empty the 'model.idexArray' variable so that we can perform accurate checks on the 2nd view
+//        
+//        model.indexArray = []
+//        model.manager = 0
+//        favoritesTableView.cellForRow(at: model.checkIndex)?.accessoryType = UITableViewCellAccessoryType.none
+//        favoritesTableView.cellForRow(at: model.checkIndex2)?.accessoryType = UITableViewCellAccessoryType.none
+//        self.performSegue(withIdentifier: "unwindToRates", sender: self)
+//    }//End of exchangeButton()
+    
     
     @IBAction func favoriteButton(_ sender: UIButton) {
         
-        // Use 'UserDefaults' to store user's favorites into our favorites collection array
+        // Use 'UserDefaults' to store user's favorites, indexes & country codes into our respective arrays
+        
+        //model.favoriteIndexes.removeo
         model.favoritesCollection.append(model.pickerCountry[favoritesPickerView.selectedRow(inComponent: 0)])
         UserDefaults.standard.set(model.favoritesCollection, forKey: "favorites")
+        
+        model.favoriteIndexes.append(favoritesPickerView.selectedRow(inComponent: 0))
+        UserDefaults.standard.set(model.favoriteIndexes, forKey: "favoriteIndexes")
+        
+        model.favoritesCountryCode.append(model.countryCode[favoritesPickerView.selectedRow(inComponent: 0)])
+        UserDefaults.standard.set(model.favoritesCountryCode, forKey: "favoriteCountryCode")
+        
+        model.favoriteCountryData.append(model.pickerData[favoritesPickerView.selectedRow(inComponent: 0)])
+        UserDefaults.standard.set(model.favoriteCountryData, forKey: "favoriteCountryData")
+
+        print(model.favoritesCountryCode)
         favoritesTableView.reloadData()
+
         
-        
-        //print(model.favoritesCollection)
-        
-    }//End of favoriteButton
+    }//End of favoriteButton()
     
     override func viewDidAppear(_ animated: Bool) {
         
@@ -80,7 +115,7 @@ class FavoritesViewController: UIViewController, UIPickerViewDataSource, UIPicke
 
             model.favoritesCollection = savedFavorites
         }
-    }
+    }//End of viewDidAppear()
     
     
     //---------------------------------------------------------------------------------------------
@@ -155,56 +190,73 @@ class FavoritesViewController: UIViewController, UIPickerViewDataSource, UIPicke
         
         if editingStyle == .delete{
             
+            //**Need to delete the correct value at the correct index from the favoriteIndexes array**
             // User 'UserDefaults' to store the newly modified favorites array (deleting a row)
             model.favoritesCollection.remove(at: indexPath.row)
+            model.favoriteIndexes.remove(at: indexPath.row)
+            model.favoritesCountryCode.remove(at: indexPath.row)
+            model.favoriteCountryData.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .fade)
             UserDefaults.standard.set(model.favoritesCollection, forKey: "favorites")
+            UserDefaults.standard.set(model.favoriteIndexes, forKey: "favoriteIndexes")
+            UserDefaults.standard.set(model.favoritesCountryCode, forKey: "favoriteCountryCode")
+            UserDefaults.standard.set(model.favoriteCountryData, forKey: "favoriteCountryData")
         }
     }
     
     
-    //This function allows me to place/remove a checkmark on a highlighted row of the table view
-    func tableView(_ tableView: UITableView, didHighlightRowAt indexPath: IndexPath) {
-        
-        
-        // Only let user select favorites up to 2
-        if tableView.cellForRow(at: indexPath)?.accessoryType == UITableViewCellAccessoryType.none {
-            
-            
-            if model.manager != 2{
-                tableView.cellForRow(at: indexPath)?.accessoryType = UITableViewCellAccessoryType.checkmark
-                model.checkIndex = indexPath
-                //print(indexPath)
-                //print(model.checkIndex)
-                
-                model.manager += 1
-                if model.manager == 2{
-                    exchangeOutlet.isEnabled = true
-                }
-                print(model.manager)
-            }
-            if model.manager == 1{
-                favoriteOutlet.isEnabled = false
-            }
-            
-        }
-        // Always let the user unselect favorites
-        else if tableView.cellForRow(at: indexPath)?.accessoryType == UITableViewCellAccessoryType.checkmark {
-            tableView.cellForRow(at: indexPath)?.accessoryType = UITableViewCellAccessoryType.none
-            model.manager -= 1
-            if model.manager == 0{
-                favoriteOutlet.isEnabled = true
-            }
-            if model.manager != 2{
-                exchangeOutlet.isEnabled = false
-            }
-            model.checkIndex2 = indexPath
-            //print(indexPath)
-            //print(model.checkIndex2)
-            print(model.manager)
-        }
-        
-    }//End of tableview
+//    //This function allows me to place/remove a checkmark on a highlighted row of the table view
+//    func tableView(_ tableView: UITableView, didHighlightRowAt indexPath: IndexPath) {
+//        
+//        
+//        // Only let user select favorites up to 2
+//        if tableView.cellForRow(at: indexPath)?.accessoryType == UITableViewCellAccessoryType.none {
+//            
+//            
+////            if model.manager != 2{
+////                tableView.cellForRow(at: indexPath)?.accessoryType = UITableViewCellAccessoryType.checkmark
+////                model.checkIndex = indexPath
+//            
+//                model.indexArray.append(indexPath.row)
+//                //model.favoriteCountryData.append(indexPath.row)
+//                print(model.indexArray)
+//                
+//                model.manager += 1
+//                if model.manager == 2{
+//                    exchangeOutlet.isEnabled = true
+//                }
+//                //print(model.manager)
+//            }
+//            if model.manager == 1{
+//                favoriteOutlet.isEnabled = false
+//            }
+//            
+//        }
+//        // Always let the user unselect favorites
+//        else if tableView.cellForRow(at: indexPath)?.accessoryType == UITableViewCellAccessoryType.checkmark {
+//            tableView.cellForRow(at: indexPath)?.accessoryType = UITableViewCellAccessoryType.none
+//            
+//            for index in model.indexArray{
+//                if indexPath.row == index{
+//                    model.indexArray.remove(at: model.indexArray.index(of: index)!)
+//                
+//                }
+//            }
+//            print(model.indexArray)
+//            //model.indexArray.remove(at: indexPath.row)
+//            
+//            model.manager -= 1
+//            if model.manager == 0{
+//                favoriteOutlet.isEnabled = true
+//            }
+//            if model.manager != 2{
+//                exchangeOutlet.isEnabled = false
+//            }
+//            model.checkIndex2 = indexPath
+//            //print(model.checkIndex2[1])
+//        }
+    
+//}//End of tableview
     //---------------------------------------------------------------------------------------------
     
 }//End of FavoritesViewController

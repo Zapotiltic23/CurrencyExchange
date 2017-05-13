@@ -2,8 +2,10 @@
 //  CurrencyModel.swift
 //  CurrencyExchange
 //
-//  Created by lis meza on 4/15/17.
-//  Copyright © 2017 Horacio Sanchez. All rights reserved.
+//  Horacio A Sanchez
+//  CPSC 411
+//  DavidMcLaren
+//  May 12 2017
 //
 
 import Foundation
@@ -20,15 +22,23 @@ class currencyModel {
     
     // Set our favorites array to the stored user's favorites
     var favoritesCollection:[String] = (UserDefaults.standard.object(forKey: "favorites") as? [String])!
-    
+    var favoritesCountryCode: [String]
     var index: Int
     var index2: Int
     var favoritesIndexPicker: Int
     var manager: Int
     var checkIndex: IndexPath
     var checkIndex2: IndexPath
+    var favoriteIndexes: [Int]
+    var favoriteCountryData: [String] = []
+    var amount: Double = 0.0
+    var result: Double = 0.0
+    var currency: String = ""
+    var flagText: String = ""
+    var flagText2: String = ""
+    var indexArray: [Int] = []
     
-    init(_ index: Int, _ index2: Int, _ favoritesIndexPicker: Int, _ manager: Int, _ checkIndex: IndexPath, _ checkIndex2: IndexPath){
+    init(_ index: Int, _ index2: Int, _ favoritesIndexPicker: Int, _ manager: Int, _ checkIndex: IndexPath, _ checkIndex2: IndexPath, _ favoriteIndexes: [Int], _ favoritesCountryCode: [String]){
         
         self.index = index
         self.index2 = index2
@@ -36,9 +46,34 @@ class currencyModel {
         self.manager = manager
         self.checkIndex = [0,0]
         self.checkIndex2 = [0,0]
+        if UserDefaults.standard.object(forKey: "favoriteIndexes") as? [Int] == nil{
+            self.favoriteIndexes = []
+        }else{
+            self.favoriteIndexes = (UserDefaults.standard.object(forKey: "favoriteIndexes") as? [Int])!
+            //self.favoriteIndexes = []
+        }
+        
+        if UserDefaults.standard.object(forKey: "favoriteCountryCode") as? [String] == nil{
+            self.favoritesCountryCode = []
+        }else{
+            self.favoritesCountryCode = (UserDefaults.standard.object(forKey: "favoriteCountryCode") as? [String])!
+            //self.favoritesCountryCode = []
+        }
+        
+        if UserDefaults.standard.object(forKey: "favoriteCountryData") as? [String] == nil{
+            self.favoritesCountryCode = []
+        }else{
+            self.favoriteCountryData = (UserDefaults.standard.object(forKey: "favoriteCountryData") as? [String])!
+            //self.favoritesCountryCode = []
+        }
+        
+        
+        
+        
+        
     }//End of constructor
     
-    static let shared:currencyModel = currencyModel(0,0,0,0,[0,0],[0,0])
+    static let shared:currencyModel = currencyModel(0,0,0,0,[0,0],[0,0],[],[])
     
     func flags(countryCode: String) -> String{
         

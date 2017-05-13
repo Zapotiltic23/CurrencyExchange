@@ -1,10 +1,13 @@
 //
-//  AppDelegate.swift
+//  CurrencyModel.swift
 //  CurrencyExchange
 //
-//  Created by lis meza on 4/11/17.
-//  Copyright © 2017 Horacio Sanchez. All rights reserved.
+//  Horacio A Sanchez
+//  CPSC 411
+//  DavidMcLaren
+//  May 12 2017
 //
+
 
 import UIKit
 

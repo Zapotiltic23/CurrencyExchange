@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D732D6421EBAD17B00102311 /* pokemons.png in Resources */ = {isa = PBXBuildFile; fileRef = D732D6411EBAD17B00102311 /* pokemons.png */; };
+		D79B78391EC6E6D800EA8E8B /* background.png in Resources */ = {isa = PBXBuildFile; fileRef = D79B78381EC6E6D800EA8E8B /* background.png */; };
 		D7F2D05D1E9DA2EB0010B5FD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F2D05C1E9DA2EB0010B5FD /* AppDelegate.swift */; };
 		D7F2D05F1E9DA2EB0010B5FD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F2D05E1E9DA2EB0010B5FD /* ViewController.swift */; };
 		D7F2D0641E9DA2EB0010B5FD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D7F2D0631E9DA2EB0010B5FD /* Assets.xcassets */; };
@@ -14,10 +16,11 @@
 		D7F2D0721E9DA7810010B5FD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D7F2D0701E9DA7810010B5FD /* Main.storyboard */; };
 		D7F2D0751EA333FF0010B5FD /* CurrencyModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F2D0741EA333FF0010B5FD /* CurrencyModel.swift */; };
 		D7F2D0771EA5F0720010B5FD /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F2D0761EA5F0720010B5FD /* FavoritesViewController.swift */; };
-		D7F2D0791EA5F6670010B5FD /* FavoritesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D7F2D0781EA5F6670010B5FD /* FavoritesView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D732D6411EBAD17B00102311 /* pokemons.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = pokemons.png; path = ../pokemons.png; sourceTree = "<group>"; };
+		D79B78381EC6E6D800EA8E8B /* background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = background.png; path = ../background.png; sourceTree = "<group>"; };
 		D7F2D0591E9DA2EB0010B5FD /* CurrencyExchange.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CurrencyExchange.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D7F2D05C1E9DA2EB0010B5FD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D7F2D05E1E9DA2EB0010B5FD /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -27,7 +30,6 @@
 		D7F2D0711E9DA7810010B5FD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = CurrencyExchange/Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D7F2D0741EA333FF0010B5FD /* CurrencyModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CurrencyModel.swift; path = ../CurrencyModel.swift; sourceTree = "<group>"; };
 		D7F2D0761EA5F0720010B5FD /* FavoritesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FavoritesViewController.swift; path = ../FavoritesViewController.swift; sourceTree = "<group>"; };
-		D7F2D0781EA5F6670010B5FD /* FavoritesView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FavoritesView.swift; path = ../FavoritesView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -41,6 +43,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D732D63F1EB9B9D000102311 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				D7F2D0761EA5F0720010B5FD /* FavoritesViewController.swift */,
+				D7F2D05E1E9DA2EB0010B5FD /* ViewController.swift */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		D732D6401EB9B9F200102311 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				D7F2D0741EA333FF0010B5FD /* CurrencyModel.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
 		D7F2D0501E9DA2EB0010B5FD = {
 			isa = PBXGroup;
 			children = (
@@ -60,11 +79,11 @@
 		D7F2D05B1E9DA2EB0010B5FD /* CurrencyExchange */ = {
 			isa = PBXGroup;
 			children = (
+				D732D6401EB9B9F200102311 /* Model */,
+				D732D63F1EB9B9D000102311 /* ViewControllers */,
 				D7F2D05C1E9DA2EB0010B5FD /* AppDelegate.swift */,
-				D7F2D0741EA333FF0010B5FD /* CurrencyModel.swift */,
-				D7F2D0781EA5F6670010B5FD /* FavoritesView.swift */,
-				D7F2D0761EA5F0720010B5FD /* FavoritesViewController.swift */,
-				D7F2D05E1E9DA2EB0010B5FD /* ViewController.swift */,
+				D79B78381EC6E6D800EA8E8B /* background.png */,
+				D732D6411EBAD17B00102311 /* pokemons.png */,
 				D7F2D0701E9DA7810010B5FD /* Main.storyboard */,
 				D7F2D0631E9DA2EB0010B5FD /* Assets.xcassets */,
 				D7F2D0651E9DA2EC0010B5FD /* LaunchScreen.storyboard */,
@@ -133,8 +152,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				D7F2D0721E9DA7810010B5FD /* Main.storyboard in Resources */,
+				D79B78391EC6E6D800EA8E8B /* background.png in Resources */,
 				D7F2D0671E9DA2EC0010B5FD /* LaunchScreen.storyboard in Resources */,
 				D7F2D0641E9DA2EB0010B5FD /* Assets.xcassets in Resources */,
+				D732D6421EBAD17B00102311 /* pokemons.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -145,7 +166,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D7F2D0791EA5F6670010B5FD /* FavoritesView.swift in Sources */,
 				D7F2D05F1E9DA2EB0010B5FD /* ViewController.swift in Sources */,
 				D7F2D05D1E9DA2EB0010B5FD /* AppDelegate.swift in Sources */,
 				D7F2D0771EA5F0720010B5FD /* FavoritesViewController.swift in Sources */,
@@ -273,6 +293,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				INFOPLIST_FILE = CurrencyExchange/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = HS.CurrencyExchange;
@@ -285,6 +306,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				INFOPLIST_FILE = CurrencyExchange/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = HS.CurrencyExchange;
@@ -312,6 +334,7 @@
 				D7F2D06D1E9DA2EC0010B5FD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
