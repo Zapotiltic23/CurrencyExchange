@@ -1,3 +1,12 @@
+//
+//  CurrencyModel.swift
+//  CurrencyExchange
+//
+//  Horacio A Sanchez
+//  CPSC 411
+//  DavidMcLaren
+//  May 12 2017
+
 # CurrencyExchange
 Global Currency Translator: CPSC 411 HW #3
 
